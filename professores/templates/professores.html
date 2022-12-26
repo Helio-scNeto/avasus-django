@@ -21,39 +21,38 @@
             <div class="row">
                 <div class="col-md">
                     <p>Nome:</p>
-                    <input type="text" class="form-control" placeholder="Primeiro nome">
+                    <input type="text" class="form-control" placeholder="Nome completo" name="nome"  required>
                 </div>
                 <div class="col-md">
                     <p>Nome Social</p>
-                    <input type="text" class="form-control" placeholder="(Opcional)">
+                    <input type="text" class="form-control" placeholder="(Opcional)" name="nomeSocial">
                 </div>
             </div>
             <br>
             <p>Estado</p>
-            <input type="email" class="form-control" placeholder="UF" name="estado">
+            <input type="text" class="form-control" placeholder="UF" name="estado"  required>
             <br>
             <br>
             <p>Cidade</p>
-            <input type="email" class="form-control" placeholder="Cidade" name="cidade">
+            <input type="text" class="form-control" placeholder="Cidade" name="cidade"  required>
             <br>
             <p>CPF:</p>
-            <input type="text" class="form-control" placeholder="___.___.___-__" name="cpf">
+            <input type="text" class="form-control" placeholder="___.___.___-__" name="cpf" required>
             <br>
             <p>Senha</p>
-            <input type="password" class="form-control" placeholder="Digite sua senha" name="senha">
+            <input type="password" class="form-control" placeholder="Digite sua senha" name="senha" required>
             <br>
             <p>Confirmar senha</p>
-            <input type="password" class="form-control" placeholder="Digite sua senha novamente" name="senha">
+            <input type="password" class="form-control" placeholder="Digite sua senha novamente" name="senhaConfirm"  required>
             <br>
             <p>Data de nascimento</p>
-            <input id="date" type="date" value="0000-00-00">
+            <input id="date" type="date" value="0000-00-00" name="aniversario" required>
             <hr style="background-color:gray;">
             <br>
-            <input type="submit" value="Cadastrar" class="btn-principal">
+            <input type="submit" value="Cadastrar" class="btn-principal" onclick="add_professor()">
         </form>
-        
     </div>
-    
 </div>
+<script src="{% static 'professores/js/professores.js' %}"></script>
 
 {% endblock %}
