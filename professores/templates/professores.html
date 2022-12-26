@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{%load static %}
+
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'professores/css/professores.css' %}">
+{% endblock %}
+
+{% block 'dashboard' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md card-dashboard">
+            <p class="text-card">Adicionar professores</p>
+        </div>
+        <div class="col-md card-dashboard">
+            <p class="text-card">Atualizar professores</p>
+        </div>
+    </div>
+    <div class="adicionar-cliente">
+        <form action="{% url 'professores' %}" method="POST">{% csrf_token %}
+            <div class="row">
+                <div class="col-md">
+                    <p>Nome:</p>
+                    <input type="text" class="form-control" placeholder="Primeiro nome">
+                </div>
+                <div class="col-md">
+                    <p>Nome Social</p>
+                    <input type="text" class="form-control" placeholder="(Opcional)">
+                </div>
+            </div>
+            <br>
+            <p>Estado</p>
+            <input type="email" class="form-control" placeholder="UF" name="estado">
+            <br>
+            <br>
+            <p>Cidade</p>
+            <input type="email" class="form-control" placeholder="Cidade" name="cidade">
+            <br>
+            <p>CPF:</p>
+            <input type="text" class="form-control" placeholder="___.___.___-__" name="cpf">
+            <br>
+            <p>Senha</p>
+            <input type="password" class="form-control" placeholder="Digite sua senha" name="senha">
+            <br>
+            <p>Confirmar senha</p>
+            <input type="password" class="form-control" placeholder="Digite sua senha novamente" name="senha">
+            <br>
+            <p>Data de nascimento</p>
+            <input id="date" type="date" value="0000-00-00">
+            <hr style="background-color:gray;">
+            <br>
+            <input type="submit" value="Cadastrar" class="btn-principal">
+        </form>
+        
+    </div>
+    
+</div>
+
+{% endblock %}
