@@ -1,8 +1,9 @@
+import json
 import re
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import Professor
-
+from django.core import serializers
 
 def Professores(request):
     if request.method == "GET":
@@ -34,4 +35,11 @@ def Professores(request):
 
         professor.save()
 
-        return HttpResponse('teste')
+        # return HttpResponse('teste')
+
+
+def attProf(request):
+    idProf = request.POST.get('idProf')
+    professor = Professor.objects.filter(id=idProf)
+    jsonProf = json.loads(serializers.serialize('json', professor))[0]['fields']
+    return JsonResponse(jsonProf)

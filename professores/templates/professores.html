@@ -57,13 +57,51 @@
     </div>
     <div id="attProf">
         <p></p>
-        <select  id="selectProf" class="form-control" onchange="dadosProf()">
+        <select id="selectProf" class="form-control" onchange="dadosProf()">
             {%for professor in professores %}
             <option value="{{professor.id}}">{{professor.nome}}</option>
             {% empty %}
             <p>Ainda não há professores cadastrados!</p>
             {% endfor %}
         </select>
+        <br>
+        <hr>
+        <div id="formAttProf">
+            <div class="row">
+                <div class="col-md">
+                    <p>Nome:</p>
+                    <input id="nome" type="text" class="form-control" placeholder="Nome completo" name="nome" required
+                        value="{{nome}}">
+                </div>
+                <div class="col-md">
+                    <p>Nome Social</p>
+                    <input id="nomeSocial" type="text" class="form-control" placeholder="(Opcional)" name="nomeSocial">
+                </div>
+            </div>
+            <br>
+            <p>Estado</p>
+            <input id="estado" type="text" class="form-control" name="estado" required>
+            <br>
+            <br>
+            <p>Cidade</p>
+            <input id= "cidade" type="text" class="form-control" name="cidade" required>
+            <br>
+            <p>CPF:</p>
+            <input id= "cpf" type="text" class="form-control" name="cpf" required>
+            <br>
+            <p>Senha</p>
+            <input id= "senha" type="password" class="form-control" name="senha" required>
+            <br>
+            <p>Digite a senha do usuário novamente para confirmar a atualização</p>
+            <input type="password" class="form-control" placeholder="Digite sua senha novamente" name="senhaConfirm"
+            required>
+            <br>
+            <p>Data de nascimento</p>
+            <input id="aniversario" type="date" name="aniversario" required>
+            <hr style="background-color:gray;">
+            <br>
+            <input type="submit" value="Atualizar" class="btn-principal">
+        </div>
     </div>
 </div>
 <script src="{% static 'professores/js/professores.js' %}"></script>

@@ -5,7 +5,7 @@
   margin-top: 40px;
   text-align: center;
   padding: 20px;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .text-card {
@@ -21,5 +21,9 @@
 }
 
 #att_Prof {
+  display: none;
+}
+
+#formAttProf {
   display: none;
 }
