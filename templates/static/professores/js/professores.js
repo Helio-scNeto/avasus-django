@@ -1,6 +1,6 @@
 function exibir_form(tipo) {
-  addProf = document.getElementById('addProf');
-  attProf = document.getElementById('attProf');
+  const addProf = document.getElementById('addProf');
+  const attProf = document.getElementById('attProf');
 
   if (tipo == 1) {
     attProf.style.display = 'none';
@@ -9,4 +9,19 @@ function exibir_form(tipo) {
     addProf.style.display = 'none';
     attProf.style.display = 'block';
   }
+}
+
+function dadosProf() {
+  const professor = document.getElementById('selectProf');
+  const csrf_token = document.querySelector('[name=csrfmiddlewaretoken]')
+  const idProf = professor.value
+  const data = new FormData()
+  data.append('idProf',idProf )
+  fetch("/professores/attProfessor/",{
+    method: "POST",
+    headers: {
+      'X-CSRFToken': csrf_token,
+    },
+    body:
+  })
 }

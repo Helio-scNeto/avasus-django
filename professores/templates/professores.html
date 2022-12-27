@@ -57,7 +57,7 @@
     </div>
     <div id="attProf">
         <p></p>
-        <select>
+        <select  id="selectProf" class="form-control" onchange="dadosProf()">
             {%for professor in professores %}
             <option value="{{professor.id}}">{{professor.nome}}</option>
             {% empty %}
