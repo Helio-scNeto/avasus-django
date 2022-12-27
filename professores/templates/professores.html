@@ -9,48 +9,61 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md card-dashboard">
+        <div onClick="exibir_form('1')" class="col-md card-dashboard">
             <p class="text-card">Adicionar professores</p>
         </div>
-        <div class="col-md card-dashboard">
+        <div onClick="exibir_form('2')" class="col-md card-dashboard">
             <p class="text-card">Atualizar professores</p>
         </div>
     </div>
-    <div class="adicionar-cliente">
+    <div id="addProf">
         <form action="{% url 'professores' %}" method="POST">{% csrf_token %}
             <div class="row">
                 <div class="col-md">
                     <p>Nome:</p>
-                    <input type="text" class="form-control" placeholder="Nome completo" name="nome"  required>
+                    <input type="text" class="form-control" placeholder="Nome completo" name="nome" required
+                        value="{{nome}}">
                 </div>
                 <div class="col-md">
                     <p>Nome Social</p>
-                    <input type="text" class="form-control" placeholder="(Opcional)" name="nomeSocial">
+                    <input type="text" class="form-control" placeholder="(Opcional)" name="nomeSocial"
+                        value="{{nomeSocial}}">
                 </div>
             </div>
             <br>
             <p>Estado</p>
-            <input type="text" class="form-control" placeholder="UF" name="estado"  required>
+            <input type="text" class="form-control" placeholder="UF" name="estado" required value="{{estado}}">
             <br>
             <br>
             <p>Cidade</p>
-            <input type="text" class="form-control" placeholder="Cidade" name="cidade"  required>
+            <input type="text" class="form-control" placeholder="Cidade" name="cidade" required value="{{cidade}}">
             <br>
             <p>CPF:</p>
-            <input type="text" class="form-control" placeholder="___.___.___-__" name="cpf" required>
+            <input type="text" class="form-control" placeholder="___.___.___-__" name="cpf" required value="{{cpf}}">
             <br>
             <p>Senha</p>
             <input type="password" class="form-control" placeholder="Digite sua senha" name="senha" required>
             <br>
             <p>Confirmar senha</p>
-            <input type="password" class="form-control" placeholder="Digite sua senha novamente" name="senhaConfirm"  required>
+            <input type="password" class="form-control" placeholder="Digite sua senha novamente" name="senhaConfirm"
+                required>
             <br>
             <p>Data de nascimento</p>
-            <input id="date" type="date" value="0000-00-00" name="aniversario" required>
+            <input id="date" type="date" name="aniversario" required>
             <hr style="background-color:gray;">
             <br>
-            <input type="submit" value="Cadastrar" class="btn-principal" onclick="add_professor()">
+            <input type="submit" value="Cadastrar" class="btn-principal">
         </form>
+    </div>
+    <div id="attProf">
+        <p></p>
+        <select>
+            {%for professor in professores %}
+            <option value="{{professor.id}}">{{professor.nome}}</option>
+            {% empty %}
+            <p>Ainda não há professores cadastrados!</p>
+            {% endfor %}
+        </select>
     </div>
 </div>
 <script src="{% static 'professores/js/professores.js' %}"></script>
