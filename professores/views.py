@@ -41,5 +41,6 @@ def Professores(request):
 def attProf(request):
     idProf = request.POST.get('idProf')
     professor = Professor.objects.filter(id=idProf)
-    jsonProf = json.loads(serializers.serialize('json', professor))[0]['fields']
-    return JsonResponse(jsonProf)
+    profJson = json.loads(serializers.serialize('json', professor))[0]['fields']
+    data = {'professor': profJson}
+    return JsonResponse(data)

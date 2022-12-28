@@ -33,25 +33,25 @@ function dadosProf() {
     .then(function (data) {
       document.getElementById('formAttProf').style.display = 'block';
 
-      nome = document.getElementById('nome');
-      nome.value  = data['nome'];
+      const nome = document.getElementById('nome');
+      nome.value = data['professor']['nome'];
 
-      nomeSocial = document.getElementById('nomeSocial');
-      nomeSocial.value = data['nomeSocial'];
+      const nomeSocial = document.getElementById('nomeSocial');
+      nomeSocial.value = data['professor']['nomeSocial'];
 
-      estado = document.getElementById('estado');
-      estado.value = data['estado'];
+      const estado = document.getElementById('estado');
+      estado.value = data['professor']['estado'];
 
-      cidade = document.getElementById('cidade');
-      cidade.value = data['cidade'];
+      const cidade = document.getElementById('cidade');
+      cidade.value = data['professor']['cidade'];
 
-      cpf = document.getElementById('cpf');
-      cpf.value = data['cpf'];
+      const cpf = document.getElementById('cpf');
+      cpf.value = data['professor']['cpf'];
 
-      senha = document.getElementById('senha');
-      senha.value = data['senha'];
+      const senha = document.getElementById('senha');
+      senha.value = data['professor']['senha'];
 
       aniversario = document.getElementById('aniversario');
-      aniversario.value = data['aniversario'];
+      aniversario.value = data['professor']['aniversario'];
     });
 }
