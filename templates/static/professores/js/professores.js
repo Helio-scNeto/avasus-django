@@ -33,6 +33,9 @@ function dadosProf() {
     .then(function (data) {
       document.getElementById('formAttProf').style.display = 'block';
 
+      const id = document.getElementById('id');
+      id.value = data['profIdJson'];
+
       const nome = document.getElementById('nome');
       nome.value = data['professor']['nome'];
 
@@ -53,5 +56,50 @@ function dadosProf() {
 
       aniversario = document.getElementById('aniversario');
       aniversario.value = data['professor']['aniversario'];
+    });
+}
+
+function updateProf() {
+  id = document.getElementById('id').value;
+  nome = document.getElementById('nome').value;
+  nomeSocial = document.getElementById('nomeSocial').value;
+  cidade = document.getElementById('cidade').value;
+  estado = document.getElementById('estado').value;
+  cpf = document.getElementById('cpf').value;
+  aniversario = document.getElementById('aniversario').value;
+  senha = document.getElementById('senha').value;
+
+  fetch('/professores/updateProf/' + id, {
+    method: 'POST',
+    headers: {
+      
+    },
+    body: JSON.stringify({
+      nome: nome,
+      nomeSocial: nomeSocial,
+      cidade: cidade,
+      estado: estado,
+      cpf: cpf,
+      aniversario: aniversario,
+      senha: senha,
+    }),
+  })
+    .then(function (result) {
+      return result.json();
+    })
+    .then(function (data) {
+      if(data['status'] == '200') {
+        const nome = data['nome']
+        const nomeSocial = data['nomeSocial']
+        const cidade = data['cidade']
+        const estado = data['estado']
+        const cpf = data['cpf']
+        const aniversario = data['aniversario']
+        const senha = data['senha']
+        window.alert('Dados alterado com sucesso!')
+      }
+      else {
+        window.alert('Ocorreu algum erro')
+      }
     });
 }

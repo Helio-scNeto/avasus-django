@@ -67,9 +67,10 @@
         <br>
         <hr>
         <div id="formAttProf">
+            <input type="hidden" id="id">
             <div class="row">
                 <div class="col-md">
-                    <p>Nome:</p>
+                    <p>Nome</p>
                     <input id="nome" type="text" class="form-control" placeholder="Nome completo" name="nome" required
                         value="{{nome}}">
                 </div>
@@ -80,17 +81,17 @@
             </div>
             <br>
             <p>Estado</p>
-            <input id="estado" type="text" class="form-control" name="estado" required>
+            <input id="estado" type="text" class="form-control" required>
             <br>
             <br>
             <p>Cidade</p>
-            <input id= "cidade" type="text" class="form-control" name="cidade" required>
+            <input id= "cidade" type="text" class="form-control" required>
             <br>
             <p>CPF:</p>
-            <input id= "cpf" type="text" class="form-control" name="cpf" required>
+            <input id= "cpf" type="text" class="form-control" required>
             <br>
             <p>Senha</p>
-            <input id= "senha" type="password" class="form-control" name="senha" required>
+            <input id= "senha" type="password" class="form-control" required>
             <br>
             <p>Digite a senha do usuário novamente para confirmar a atualização</p>
             <input type="password" class="form-control" placeholder="Digite sua senha novamente" name="senhaConfirm"
@@ -100,7 +101,7 @@
             <input id="aniversario" type="date" name="aniversario" required>
             <hr style="background-color:gray;">
             <br>
-            <input type="submit" value="Atualizar" class="btn-principal">
+            <input onclick="updateProf()" type="submit" value="Salvar alterações" class=" btn btn-success">
         </div>
     </div>
 </div>
