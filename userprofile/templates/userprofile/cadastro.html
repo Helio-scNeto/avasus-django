@@ -1,0 +1,15 @@
+{% extends 'userprofile/base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Cadastrar" class="btn btn-primary">
+</form>
+
+<div style="color: red;"> errors </div>
+
+{% endblock %}

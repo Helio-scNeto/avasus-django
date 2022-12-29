@@ -1,0 +1,15 @@
+{% extends 'userprofile/base.html'%}
+
+{% load static %}
+
+{% block content %}
+<form action="" method="POST">
+    <h2>{{object}}, deseja realmente excluir seu registor?</h2>
+    <p>Confirme para excluir o registro definitivamente</p>
+    {% csrf_token %}
+    {{form.as_p}}
+    <br>
+    <input type="submit" value="Confirmar" class="btn btn-danger">
+</form>
+
+{% endblock %}

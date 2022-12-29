@@ -1,0 +1,31 @@
+{% extends 'userprofile/base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+<h3>Lista de Professores registrados</h3>
+<hr>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>Nome</th>
+            <th>Nome Social</th>
+        </tr>
+        {% for User in object_list %}
+        <tr>
+            <td>{{User.nome}}</td>
+            <td>{{User.nomeSocial}}</td>
+            <td>
+                <a href="{% url 'userprofile:attCadastro' User.pk %}" class="btn btn-warning btn-sm" title="edit">E</a>
+                <a href="{% url 'userprofile:delCadastro' User.pk %}" class="btn btn-danger btn-sm" title="delete">X</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="2">Nenhum professor registrado.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
