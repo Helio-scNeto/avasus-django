@@ -16,7 +16,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -26,10 +25,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'professores',
     'userprofile',
-    'forum',
+    'crispy_forms'
 ]
+
+AUTH_USER_MODEL = 'userprofile.User'
+
+#Crispy Forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -118,3 +121,8 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Configurações de Autenticação
+LOGIN_REDIRECT_URL = 'userprofile:home'
+LOGOUT_REDIRECT_URL = 'userprofile:login'
+LOGIN_URL = 'userprofile:login'
