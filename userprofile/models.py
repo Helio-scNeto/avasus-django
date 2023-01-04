@@ -41,7 +41,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractUser):
     username = None
-    cpf = models.CharField(unique=True, max_length=11, verbose_name='CPF')
+    cpf = models.CharField(unique=True, max_length=14, verbose_name='CPF')
     nome = models.CharField(max_length=50, verbose_name='Nome completo')
     nomeSocial = models.CharField(
         max_length=50, blank=True, null=True, verbose_name='Nome Social')

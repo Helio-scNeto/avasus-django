@@ -26,7 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'userprofile',
-    'crispy_forms'
+    'crispy_forms',
+    'forum'
 ]
 
 AUTH_USER_MODEL = 'userprofile.User'
@@ -123,6 +124,6 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #Configurações de Autenticação
-LOGIN_REDIRECT_URL = 'userprofile:home'
+LOGIN_REDIRECT_URL = 'userprofile:profile'
 LOGOUT_REDIRECT_URL = 'userprofile:login'
 LOGIN_URL = 'userprofile:login'

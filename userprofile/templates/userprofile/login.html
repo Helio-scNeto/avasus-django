@@ -5,8 +5,12 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
+{% if request.user.is_authenticated %}
+<p class="col-md mx-auto">
+    Usuário já autenticado, ação não permitida.
+</p>
 <div class="row">
+    {% else %}
     <div class="col-md-3 mx-auto">
         <form action="" method="POST">
             {% csrf_token %}
@@ -14,5 +18,6 @@
             <input type="submit" value="Entrar">
         </form>
     </div>
+    {%endif%}
 </div>
 {% endblock %}

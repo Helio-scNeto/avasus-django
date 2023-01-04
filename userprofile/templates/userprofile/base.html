@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
@@ -13,35 +13,43 @@
 </head>
 
 <body>
-  <!-- Image and text -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="">AVASUS</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-brand" href="{%  url 'userprofile:home' %}">AVASUS</a>
+    <ul class="navbar-nav navbar-dark bg-dark">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user-circle" aria-hidden="true"></i>
+          <span id="username">
+            {{ request.user.nome }}
+            {{ request.user.aniversario }}
+            {{ request.user.cpf }}
+          </span>
+        </a>
+        <li class="nav-item ">
+          <a class="nav-link" href="{% url 'userprofile:logout' %}">
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+            Encerrar sessão
+          </a>
+        </li>
+      </li>
+      {% else %}
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'userprofile:cadastro' %}">
+          <i class="fa fa-user-plus" aria-hidden="true"></i>
+          Cadastre-se
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'userprofile:login' %}">
+          <i class="fa fa-sign-in" aria-hidden="true"></i>
+          Entrar
+        </a>
+      </li>
+      {% endif %}
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="">Home</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{%  url 'userprofile:cadastro' %}">Cadastro</a>
-        </li>
-
-
-    </div>
+    </ul>
   </nav>
   <hr>
   {% block content %}
