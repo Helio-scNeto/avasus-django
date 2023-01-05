@@ -12,7 +12,9 @@
         <form action="" method="POST">
             {% csrf_token %}
             {{form | crispy}}
-            <input type="submit" class="btn btn-primary" value="Cadastrar">
+            <button type="submit" class="btn btn-primary">
+                {{botao}}
+            </button>
         </form>
     </div>
 </form>

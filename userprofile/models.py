@@ -47,7 +47,7 @@ class User(AbstractUser):
         max_length=50, blank=True, null=True, verbose_name='Nome Social')
     estado = models.CharField(max_length=50, verbose_name='Estado')
     cidade = models.CharField(max_length=50, verbose_name='Cidade')
-    password = models.CharField(max_length=11, verbose_name='Senha')
+    password = models.CharField(max_length=100,verbose_name='Senha')
     aniversario = models.DateField(
         max_length=6, verbose_name='Data de Nascimento', null=True)
 

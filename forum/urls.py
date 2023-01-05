@@ -1,13 +1,13 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
 from . import views
-from .views import Cadastro, attCadastro, delCadastro, listCadastro
+from .views import CadastroSubforum, attSubforum, delSubforum, listSubforum
 
 app_name = 'forumview'
 
 urlpatterns = [
-    path('cadastro/', Cadastro.as_view(), name="cadastro"),
-    path('cadastro/att/<int:pk>/', attCadastro.as_view(), name="attCadastro"),
-    path('cadastro/del/<int:pk>/', delCadastro.as_view(), name="delCadastro"),
-    path('cadastro/list/', listCadastro.as_view(), name="listCadastro"),
+    path('cadastro/', CadastroSubforum.as_view(), name="cadastroSubforum"),
+    path('att/<int:pk>/', attSubforum.as_view(), name="attSubforum"),
+    path('del/<int:pk>/', delSubforum.as_view(), name="delSubforum"),
+    path('list/', listSubforum.as_view(), name="listSubforum"),
 ]

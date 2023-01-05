@@ -5,6 +5,11 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+{% if request.user.is_authenticated %}
+<p class="col-md mx-auto">
+    Para acessar a área de cadastro você deve deslogar.
+</p>
+{% else %}
 <h3>{{titulo}}</h3>
 <form action="" method="POST">
     {% csrf_token %}
@@ -16,4 +21,5 @@
         </form>
     </div>
 </form>
+{%endif%}
 {% endblock %}
