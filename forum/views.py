@@ -9,7 +9,7 @@ from braces.views import GroupRequiredMixin
 
 
 class CadastroSubforum(GroupRequiredMixin,CreateView, LoginRequiredMixin):
-    group_required = u"Professores"
+    group_required = u'Alunos'
     login_url = reverse_lazy('login')
     model = Subforum
     fields = ['titulo', 'descriçao', 'categoria']

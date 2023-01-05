@@ -20,7 +20,7 @@ class Subforum(models.Model):
     categoria = models.ForeignKey(
         Categoria, blank=False, on_delete=models.PROTECT)
 
-    user = models.ForeignKey(User, blank=False, on_delete=models.PROTECT)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
 
     def __str__(self) -> str:
         return self.titulo
