@@ -9,8 +9,8 @@ from braces.views import GroupRequiredMixin
 
 
 class CadastroSubforum(GroupRequiredMixin,CreateView, LoginRequiredMixin):
-    group_required = u"Professores"
     login_url = reverse_lazy('login')
+    group_required = u"Professores"
     model = Subforum
     fields = ['titulo', 'descriçao', 'categoria']
     template_name = 'forumview/cadastro.html'
@@ -69,3 +69,6 @@ class listSubforum(ListView, LoginRequiredMixin):
     def get_queryset(self):
         self.subforumList = Subforum.objects.filter(user=self.request.user)
         return self.subforumList
+
+class addTopico(CreateView):
+    fields = ['titulo', 'texto']

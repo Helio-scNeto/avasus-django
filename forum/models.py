@@ -27,6 +27,8 @@ class Subforum(models.Model):
 
 class Topico(models.Model):
     subforum = models.ForeignKey(Subforum, on_delete=models.CASCADE)
+    titulo = models.CharField(
+        unique=True, max_length=120, blank=False, verbose_name='Título')
     texto = models.TextField(verbose_name='Texto', blank=False)
 
     def __str__(self) -> str:
