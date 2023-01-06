@@ -38,7 +38,6 @@ class Cadastro(CreateView):
 
         return context 
     
-
 class attCadastro(UpdateView): 
     model = User
     fields = ['cpf','nome', 'nomeSocial', 'estado', 'cidade', 'password','aniversario']

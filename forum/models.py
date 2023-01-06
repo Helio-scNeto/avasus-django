@@ -20,16 +20,25 @@ class Subforum(models.Model):
     categoria = models.ForeignKey(
         Categoria, blank=False, on_delete=models.PROTECT)
 
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return self.titulo
 
+
 class Topico(models.Model):
-    subforum = models.ForeignKey(Subforum, on_delete=models.CASCADE)
+    subforum = models.ForeignKey(
+        Subforum, on_delete=models.CASCADE, blank=False)
+
     titulo = models.CharField(
         unique=True, max_length=120, blank=False, verbose_name='Título')
+
     texto = models.TextField(verbose_name='Texto', blank=False)
 
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, verbose_name='Autor')
+
+    createdAt = models.DateField(auto_now_add=True, verbose_name='Data de criação')
+
     def __str__(self) -> str:
-        return self.texto
+        return self.subforum.pk

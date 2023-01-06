@@ -5,7 +5,7 @@
 {% block content %}
 
 <h3>Lista de Subforuns cadastrados</h3>
-<a href="{% url 'forumview:cadastroSubforum' %}" class="btn btn-primary btn-sm">Criar novo Subfórum</a>
+<a href="{% url 'forumview:criarSubforum' %}" class="btn btn-primary btn-sm">Criar novo Subfórum</a>
 <hr>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -17,13 +17,17 @@
         </tr>
         {% for Subforum in object_list %}
         <tr>
-            <td>{{Subforum.titulo}}</td>
+
+            <td><a href="{% url 'forumview:listTopico' Subforum.pk %}">{{Subforum.titulo}}</a></td>
+
             <td>{{Subforum.descriçao}}</td>
             <td>{{Subforum.categoria}}</td>
             <td>{{Subforum.user}}</td>
             <td>
-                <a href="{% url 'forumview:attSubforum' Subforum.pk %}" class="btn btn-warning btn-sm" title="edit">E</a>
-                <a href="{% url 'forumview:delSubforum' Subforum.pk %}" class="btn btn-danger btn-sm" title="delete">X</a>
+                <a href="{% url 'forumview:attSubforum' Subforum.pk %}" class="btn btn-warning btn-sm"
+                    title="edit">E</a>
+                <a href="{% url 'forumview:delSubforum' Subforum.pk %}" class="btn btn-danger btn-sm"
+                    title="delete">X</a>
             </td>
         </tr>
         {% empty %}
