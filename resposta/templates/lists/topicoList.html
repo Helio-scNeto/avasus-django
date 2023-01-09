@@ -5,7 +5,9 @@
 {% block content %}
 
 <h3>{{titulo}}</h3>
-<a href="{% url 'forumview:criarTopico' %}" class="btn btn-primary btn-sm">Criar Tópico</a>
+
+<a href="{% url 'topico:criarTopico' subforum.pk %}" class="btn btn-primary btn-sm">Criar Tópico</a>
+
 <hr>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -20,7 +22,6 @@
         <tr>
             <td>{{Topico.titulo}}</td>
             <td>{{Topico.user}}</td>
-            <td></td>
         </tr>
         {% empty %}
         <tr>

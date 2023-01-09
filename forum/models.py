@@ -1,15 +1,11 @@
 from django.db import models
 from userprofile.models import User
 
-# Create your models here.
-
-
 class Categoria(models.Model):
     nome = models.CharField(unique=True, max_length=30, verbose_name='Nome')
 
     def __str__(self) -> str:
         return self.nome
-
 
 class Subforum(models.Model):
     titulo = models.CharField(
@@ -25,20 +21,7 @@ class Subforum(models.Model):
     def __str__(self) -> str:
         return self.titulo
 
-
-class Topico(models.Model):
+class AlunoPermitido(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
     subforum = models.ForeignKey(
-        Subforum, on_delete=models.CASCADE, blank=False)
-
-    titulo = models.CharField(
-        unique=True, max_length=120, blank=False, verbose_name='Título')
-
-    texto = models.TextField(verbose_name='Texto', blank=False)
-
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, verbose_name='Autor')
-
-    createdAt = models.DateField(auto_now_add=True, verbose_name='Data de criação')
-
-    def __str__(self) -> str:
-        return self.subforum.pk
+        Subforum, on_delete=models.CASCADE)

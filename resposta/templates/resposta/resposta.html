@@ -10,7 +10,7 @@
         {% for Topico in object_list %}
         <h3>{{Topico.titulo}}</h3>
         <p>{{Topico.texto}}</p>
-        <a href="{% url 'forumview:criarTopico' %}" class="btn btn-primary btn-sm">Responder Tópico</a>
+        <a href="{% url 'resposta:criarResposta' topico.pk %}" class="btn btn-primary btn-sm">Responder Tópico</a>
         {% empty %}
         <p>Você ainda não postou nenhum</p>
         {% endfor %}

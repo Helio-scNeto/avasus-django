@@ -1,0 +1,40 @@
+{% extends 'userprofile/base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+<h3>{{titulo}}</h3>
+
+<a href="{% url 'topico:criarTopico' subforum.pk %}" class="btn btn-primary btn-sm">Criar Tópico</a>
+
+<hr>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Quantidade de Respostas</th>
+            <th>Data de Criação</th>
+            <th>Data da última resposta</th>
+        </tr>
+        {% for Topico in object_list %}
+        <tr>
+            <td>{{Topico.titulo}}</td>
+            {% if Topico.user.nomeSocial %}
+            <td>{{Topico.user.nomeSocial}}</td>
+            {% else %}
+            <td>{{Topico.user.nome}}</td>
+            {%endif%}
+            <td>{}</td>
+            <td>{{Topico.createdAt}}</td>
+            <td>{}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="2">Nenhum tópico criado neste forum.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

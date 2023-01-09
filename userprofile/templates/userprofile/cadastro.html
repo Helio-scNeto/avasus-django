@@ -11,15 +11,15 @@
 </p>
 {% else %}
 <h3>{{titulo}}</h3>
-<form action="" method="POST">
-    {% csrf_token %}
-    <div class="form-group col-md-6 mb-0">
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{form | crispy}}
-            <input type="submit" class="btn btn-primary" value="Cadastrar">
-        </form>
-    </div>
-</form>
+<div class="form-group col-md-6 mb-0">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form | crispy}}
+        <input type="submit" class="btn btn-primary" value="Cadastrar">
+    </form>
+</div>
+
 {%endif%}
+
+
 {% endblock %}
