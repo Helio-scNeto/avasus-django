@@ -1,11 +1,6 @@
 from django.db import models
 from userprofile.models import User
-
-class Categoria(models.Model):
-    nome = models.CharField(unique=True, max_length=30, verbose_name='Nome')
-
-    def __str__(self) -> str:
-        return self.nome
+from administracao.models import Categoria
 
 class Subforum(models.Model):
     titulo = models.CharField(

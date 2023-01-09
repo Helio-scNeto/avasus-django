@@ -1,11 +1,9 @@
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from .models import Subforum, Topico
 from django.urls import reverse_lazy
-from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from braces.views import GroupRequiredMixin
-from django.shortcuts import get_object_or_404
 
 # Topico
 class criarTopico(CreateView, LoginRequiredMixin, GroupRequiredMixin):
@@ -13,7 +11,7 @@ class criarTopico(CreateView, LoginRequiredMixin, GroupRequiredMixin):
     group_required = u'Professores'
     model = Topico
     fields = ['titulo', 'texto']
-    template_name = 'topico/cadastro.html'
+    template_name = 'pages/cadastro.html'
 
     def get_success_url(self) -> str:
         return reverse_lazy('topico:listTopico', kwargs={'pk': self.object.subforum.pk})

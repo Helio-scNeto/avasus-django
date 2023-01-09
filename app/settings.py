@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'forum',
     'topico',
     'resposta',
+    'administracao',
     'alunoSubforum',
     'crispy_forms',
 ]
@@ -124,6 +125,6 @@ STATIC_ROOT = os.path.join('static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #Configurações de Autenticação
-LOGIN_REDIRECT_URL = 'forumview:listSubforum'
+LOGIN_REDIRECT_URL = 'userprofile:profile'
 LOGOUT_REDIRECT_URL = 'userprofile:login'
 LOGIN_URL = 'userprofile:login'

@@ -5,7 +5,7 @@
 {% block content %}
 
 <h3>Lista de Professores registrados</h3>
-<a href="{% url 'userprofile:cadastro' %}" class="btn btn-primary btn-sm">Adicionar Professor</a>
+<a href="{% url 'administracao:cadastro' %}" class="btn btn-primary btn-sm">Adicionar Professor</a>
 <hr>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -18,8 +18,8 @@
             <td>{{User.nome}}</td>
             <td>{{User.nomeSocial}}</td>
             <td>
-                <a href="{% url 'userprofile:attCadastro' User.pk %}" class="btn btn-warning btn-sm" title="edit">E</a>
-                <a href="{% url 'userprofile:delCadastro' User.pk %}" class="btn btn-danger btn-sm" title="delete">X</a>
+                <a href="{}" class="btn btn-warning btn-sm" title="edit">E</a>
+                <a href="{}" class="btn btn-danger btn-sm" title="delete">X</a>
             </td>
         </tr>
         {% empty %}

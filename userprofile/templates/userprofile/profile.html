@@ -4,28 +4,23 @@
 
 {% block content %}
 
-<h3>Lista de Subforuns cadastrados</h3>
+{% if request.user.groups.all.0.name == 'Professores' %}
+<h3>
+    Bem vindo, professor!
+</h3>
+{% endif %}
+{% if request.user.groups.all.0.name == 'Alunos' %}
+<h3>
+    Bem vindo, aluno!
+</h3>
+{% endif %}
+{% if request.user.is_superuser %}
+<h3>
+    Bem vindo, Administrador!
+</h3>
+{% endif %}
 <hr>
-<div class="table-responsive">
-    <table class="table table-striped">
-        <tr>
-            <th>Título</th>
-            <th>Descrição</th>
-            <th>Categoria</th>
-            <th>Professor responsável</th>
-        </tr>
-        {% for Subforum in object_list %}
-        <tr>
-            <td><a href="{% url 'topico:listTopico' Subforum.pk %}">{{Subforum.titulo}}</a></td>
-            <td>{{Subforum.descriçao}}</td>
-            <td>{{Subforum.categoria}}</td>
-            <td>{{Subforum.user}}</td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="2">Nenhum fórum registrado.</td>
-        </tr>
-        {% endfor %}
-    </table>
+<div>
+    
 </div>
 {% endblock %}

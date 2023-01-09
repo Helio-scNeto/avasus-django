@@ -22,11 +22,50 @@
             {{ request.user.nome }},
             {{ request.user.aniversario }},
             {{ request.user.cpf }},
-            {% for User in users %}
-            <p>{{request.User.age}}</p>
-            {%endfor%}
           </span>
         </a>
+        {% if request.user.groups.all.0.name == 'Alunos' %}
+        <li class="nav-item ">
+          <a class="nav-link" href="{% url 'alunoSubforum:listSubforum' %}">
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+            Lista de subforuns cadastrados
+          </a>
+        </li>
+        {% endif %}
+        {% if request.user.groups.all.0.name == 'Professores' %}
+         <li class="nav-item ">
+        <a class="nav-link" href="{% url 'alunoSubforum:alunoSubforum' %}">
+          <i class="fa fa-user-plus" aria-hidden="true"></i>
+          Adicionar aluno
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'forumview:listSubforum' %}">
+          <i class="fa fa-user-plus" aria-hidden="true"></i>
+          Lista de Subforuns
+        </a>
+      </li>
+      {% endif %}
+        {% if request.user.is_superuser %}
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'administracao:cadastro' %}">
+          <i class="fa fa-user-plus" aria-hidden="true"></i>
+          Cadastrar professor
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'administracao:listCadastro' %}">
+          <i class="fa fa-user-plus" aria-hidden="true"></i>
+          Lista de subforuns cadastrados
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'administracao:cadastroCategoria' %}">
+          <i class="fa fa-user-plus" aria-hidden="true"></i>
+          Cadastrar categoria
+        </a>
+      </li>
+      {%endif%}
       <li class="nav-item ">
         <a class="nav-link" href="{% url 'userprofile:logout' %}">
           <i class="fa fa-user-plus" aria-hidden="true"></i>
