@@ -19,7 +19,7 @@ class Cadastro(CreateView, SuccessMessageMixin):
     model = User
     template_name = 'pages/cadastro.html'
     form_class = UserForm
-    success_url = reverse_lazy('userprofile:login')
+    success_url = reverse_lazy('userprofile:cadastro')
     success_message = "Conta foi criada com sucesso!"
     register = template.Library()
 
