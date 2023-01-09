@@ -1,7 +1,7 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
 from . import views
-from .views import criarSubforum, attSubforum, delSubforum, listSubforum
+from .views import criarSubforum, listSubforum
 app_name = 'forumview'
 
 urlpatterns = [
