@@ -5,7 +5,9 @@
 {% block content %}
 
 <h3>Lista de Subforuns cadastrados</h3>
+{% if request.user.groups.all.0.name == 'Professores' %}
 <a href="{% url 'forumview:criarSubforum' %}" class="btn btn-primary btn-sm">Criar novo Subfórum</a>
+{% endif %}
 <hr>
 <div class="table-responsive">
     <table class="table table-striped">

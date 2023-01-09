@@ -21,7 +21,7 @@ class Subforum(models.Model):
     def __str__(self) -> str:
         return self.titulo
 
-class AlunoPermitido(models.Model):
+class AlunoSubforum(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     subforum = models.ForeignKey(
         Subforum, on_delete=models.CASCADE)

@@ -8,6 +8,7 @@ from django.contrib.auth.models import Group
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django import template
 from django.urls import reverse_lazy
 
 @login_required(login_url='userprofile:login')
@@ -20,6 +21,7 @@ class Cadastro(CreateView, SuccessMessageMixin):
     form_class = UserForm
     success_url = reverse_lazy('userprofile:login')
     success_message = "Conta foi criada com sucesso!"
+    register = template.Library() 
 
     def form_valid(self, form):
         grupo = get_object_or_404(Group, name='Alunos')
@@ -40,7 +42,4 @@ class Cadastro(CreateView, SuccessMessageMixin):
 class listCadastro(ListView): 
     model = User
     template_name = 'lists/usersList.html'
-
-
-
 

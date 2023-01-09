@@ -4,5 +4,5 @@ from .views import alunoSubforum
 app_name = 'alunoSubforum'
 
 urlpatterns = [
-    path('alunoSubforum/<int:pk>/', alunoSubforum.as_view(), name="alunoSubforum"),
+    path('alunoSubforum/', alunoSubforum.as_view(), name="alunoSubforum"),
 ]

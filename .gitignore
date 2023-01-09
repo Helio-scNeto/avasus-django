@@ -1,6 +1,11 @@
 venv
 venv/
 __pycache__
+/__pycache__
+__pycache__/
+pyache/
+pyache
+/pyache
 migrations
 migrations/
 db.sqlite3

@@ -5,6 +5,8 @@ from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from braces.views import GroupRequiredMixin
+from django import template
+from django.contrib.auth.models import Group
 
 # SubForum
 class criarSubforum(GroupRequiredMixin, CreateView, LoginRequiredMixin):
@@ -12,7 +14,7 @@ class criarSubforum(GroupRequiredMixin, CreateView, LoginRequiredMixin):
     group_required = u"Professores"
     model = Subforum
     fields = ['titulo', 'descriçao', 'categoria']
-    template_name = 'forumview/cadastro.html'
+    template_name = 'pages/cadastro.html'
     success_url = reverse_lazy('forumview:listSubforum')
 
     def form_valid(self, form):
@@ -58,11 +60,17 @@ class delSubforum(DeleteView, LoginRequiredMixin):
         return self.subforum
 
 class listSubforum(ListView, LoginRequiredMixin):
+    group_required = u"Professores"
     model = Subforum
     template_name = 'lists/forumList.html'
+
+    register = template.Library() 
 
     def get_queryset(self):
         self.subforumList = Subforum.objects.filter(user=self.request.user)
         return self.subforumList
+
+
+
 
 
