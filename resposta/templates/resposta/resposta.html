@@ -4,16 +4,27 @@
 
 {% block content %}
 
-<h3>Feed</h3>
+<h3>{{titulo}}</h3>
+
 <hr>
-<div>
-        {% for Topico in object_list %}
-        <h3>{{Topico.titulo}}</h3>
-        <p>{{Topico.texto}}</p>
-        <a href="{% url 'resposta:criarResposta' topico.pk %}" class="btn btn-primary btn-sm">Responder Tópico</a>
+<div class="table-responsive">
+    <table class="table table-striped">
+        {% for Resposta in object_list %}
+        <tr>
+            <p>{{Resposta.texto}}</p>
+            {% if Resposta.user.nomeSocial %}
+            <h6>{{Resposta.user.nomeSocial}}, {{Resposta.createdAt}}</h4>
+            {% else %}
+            <p>{{Resposta.user.nome}}, {{Resposta.createdAt.}}</p>
+            {%endif%}
+            <p></p>
+            <p></p>
+        </tr>
         {% empty %}
-        <p>Você ainda não postou nenhum</p>
+        <tr>
+            <td colspan="2">Nenhum tópico criado neste forum.</td>
+        </tr>
         {% endfor %}
-        <br>
+    </table>
 </div>
 {% endblock %}

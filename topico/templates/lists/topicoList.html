@@ -14,9 +14,9 @@
         <tr>
             <th>Título</th>
             <th>Autor</th>
-            <th>Quantidade de Respostas</th>
             <th>Data de Criação</th>
-            <th>Data da última resposta</th>
+            <th></th>
+            <th></th>
         </tr>
         {% for Topico in object_list %}
         <tr>
@@ -26,9 +26,8 @@
             {% else %}
             <td>{{Topico.user.nome}}</td>
             {%endif%}
-            <td>{}</td>
             <td>{{Topico.createdAt}}</td>
-            <td>{}</td>
+            <td><a href="{% url 'resposta:criarResposta' Topico.pk %}">Responder tópico</a></td>
         </tr>
         {% empty %}
         <tr>

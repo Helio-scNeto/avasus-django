@@ -3,20 +3,18 @@ from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from .models import Resposta, Topico
 from django.urls import reverse_lazy
-from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from braces.views import GroupRequiredMixin
-from django.shortcuts import get_object_or_404
 
-
-class criarResposta(CreateView, LoginRequiredMixin):
+class criarResposta(CreateView, LoginRequiredMixin, GroupRequiredMixin):
     login_url = reverse_lazy('login')
+    group_required = u'Professores'
     model = Resposta
     fields = ['texto']
-    template_name = 'resposta/cadastro.html'
+    template_name = 'pages/cadastro.html'
 
     def get_success_url(self) -> str:
-        return reverse_lazy('resposta:feedResposta', kwargs={'pk': self.object.topico.pk})
+        return reverse_lazy('resposta:listResposta', kwargs={'pk': self.object.topico.pk})
 
     def form_valid(self, form):
         topico = Topico.objects.get(pk=self.kwargs['pk'])
@@ -29,15 +27,16 @@ class criarResposta(CreateView, LoginRequiredMixin):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['topico'] = Topico.objects.get(pk=self.kwargs.get('pk'))
-        context['titulo'] = "Responder tópico"
+        context['titulo'] = "Criar de Resposta"
         context['botao'] = "Responder"
 
         return context
 
-class feedResposta(ListView, LoginRequiredMixin):
+class listResposta(ListView, LoginRequiredMixin, GroupRequiredMixin):
     login_url = reverse_lazy('login')
-    model = Topico
-    template_name = 'topico/topico.html'
+    group_required = [u'Professores', u'Alunos']
+    model = Resposta
+    template_name = 'resposta/resposta.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -45,5 +44,5 @@ class feedResposta(ListView, LoginRequiredMixin):
         return context
 
     def get_queryset(self):
-        self.feedResposta = Topico.objects.filter()
-        return self.feedResposta
+        self.respostaList = Resposta.objects.filter()
+        return self.respostaList

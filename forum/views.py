@@ -2,11 +2,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from . models import Subforum
 from django.urls import reverse_lazy
-from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from braces.views import GroupRequiredMixin
 from django import template
-from django.contrib.auth.models import Group
 
 # SubForum
 class criarSubforum(GroupRequiredMixin, CreateView, LoginRequiredMixin):
@@ -30,34 +28,34 @@ class criarSubforum(GroupRequiredMixin, CreateView, LoginRequiredMixin):
         return context
 
 
-class attSubforum(UpdateView, LoginRequiredMixin):
-    model = Subforum
-    fields = ['titulo', 'descriçao', 'categoria']
-    template_name = 'forumview/cadastro.html'
-    success_url = reverse_lazy('forumview:listSubforum')
+# class attSubforum(UpdateView, LoginRequiredMixin):
+#     model = Subforum
+#     fields = ['titulo', 'descriçao', 'categoria']
+#     template_name = 'forumview/cadastro.html'
+#     success_url = reverse_lazy('forumview:listSubforum')
 
-    def get_object(self):
-        self.subforum = Subforum.objects.get(
-            pk=self.kwargs['pk'], user=self.request.user)
-        return self.subforum
+#     def get_object(self):
+#         self.subforum = Subforum.objects.get(
+#             pk=self.kwargs['pk'], user=self.request.user)
+#         return self.subforum
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['titulo'] = "Atualizar Subforuns"
-        context['botao'] = "Salvar"
+#     def get_context_data(self, *args, **kwargs):
+#         context = super().get_context_data(*args, **kwargs)
+#         context['titulo'] = "Atualizar Subforuns"
+#         context['botao'] = "Salvar"
 
-        return context
+#         return context
 
-class delSubforum(DeleteView, LoginRequiredMixin):
-    model = Subforum
-    template_name = 'forumview/delete.html'
-    success_url = reverse_lazy('forumview:listSubforum')
+# class delSubforum(DeleteView, LoginRequiredMixin):
+#     model = Subforum
+#     template_name = 'forumview/delete.html'
+#     success_url = reverse_lazy('forumview:listSubforum')
 
-    def get_object(self):
-        self.subforum = Subforum.objects.get(
-            pk=self.kwargs['pk'],
-            user=self.request.user)
-        return self.subforum
+#     def get_object(self):
+#         self.subforum = Subforum.objects.get(
+#             pk=self.kwargs['pk'],
+#             user=self.request.user)
+#         return self.subforum
 
 class listSubforum(ListView, LoginRequiredMixin):
     group_required = u"Professores"

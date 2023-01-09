@@ -7,9 +7,5 @@ app_name = 'forumview'
 urlpatterns = [
     # SubForum
     path('criarSubforum/', criarSubforum.as_view(), name="criarSubforum"),
-
-    path('attSubforum/<int:pk>/', attSubforum.as_view(), name="attSubforum"),
-    path('delSubforum/<int:pk>/', delSubforum.as_view(), name="delSubforum"),
-
     path('listSubforum/', listSubforum.as_view(), name="listSubforum"),
 ]
